@@ -1,0 +1,37 @@
+<div class="container">
+    <section class="cartSection bg-main-light rounded-4 my-2 p-4 w-75 mx-auto">
+        <h1 [class.d-none]="disabledBtn" class="h2 text-center text-main">Cart Products</h1>
+        <h1 [class.d-none]="!disabledBtn" class="h2 text-center text-main">Cart Is Empty</h1>
+        <div class="d-flex flex-wrap justify-content-between">
+            <p [class.d-none]="disabledBtn"  class="fs-4">Total Cart Price : {{cartProductDetail.totalCartPrice | currency : 'GBP'}}</p>
+            <button (click)="alertBeforeDelelet()" [class.d-none]="disabledBtn" [disabled]="disabledBtn" class="clearCart btn btn-danger">Clear Cart</button>
+        </div>
+        @for (item of cartProductDetail.products; track item.product.id) {
+            <div class="row border-bottom my-2">
+                <div class="col-md-2">
+                    <img [src]="item.product.imageCover" class="w-100"  [alt]="item.product.title">
+                </div>
+                <div class="col-md-10 d-flex align-items-center justify-content-between">
+                    <div>
+                        <h3 class="h5">{{item.product.title}}</h3>
+                        <p class="text-main p-0 m-0">price :{{item.price  | currency : 'GBP'}}</p>
+                        <button (click)="deleteItem(item.product.id)" class="btn btn-danger my-2">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                        </button>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span (click)="updateQuantity(item.product.id,item.count + 1)" class="text-main">
+                            <i class="IplusNegative cr fa-solid fa-circle-plus"></i>
+                        </span>
+                        <span class="m-0 p-0 numCount">{{item.count}}</span>
+                        <span (click)="updateQuantity(item.product.id,item.count - 1)" class="text-main">
+                            <i class="IplusNegative cr fa-solid fa-circle-minus"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+        <button [class.d-none]="disabledBtn" [disabled]="disabledBtn"  class="btn-main my-2" [routerLink]="['/ordersDetails',cartProductDetail._id]" >Order</button>
+    </section>
+</div>

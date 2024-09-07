@@ -1,0 +1,133 @@
+<section class="bg-main-light shadow p-2 my-2 rounded">
+  <h1 class="h2 text-main">Register Now:</h1>
+  <form [formGroup]="resgisterForm" (ngSubmit)="registerSubmit()">
+    <div class="my-2">
+      <label for="name">{{'form.Name' |translate}}</label>
+      <input
+        id="name"
+        [ngClass]="{
+                'is-valid': !resgisterForm.get('name')?.errors && ( resgisterForm.get('name')?.touched || resgisterForm.get('name')?.dirty),
+                'is-invalid': resgisterForm.get('name')?.errors && (resgisterForm.get('name')?.touched || resgisterForm.get('name')?.dirty),
+            }"
+        type="text"
+        class="form-control"
+        formControlName="name"
+      />
+      @if (resgisterForm.get('name')?.errors &&
+      (resgisterForm.get('name')?.touched || resgisterForm.get('name')?.dirty))
+      {
+      <div class="alert alert-danger my-1 w-50">
+        @if (resgisterForm.get('name')?.getError('required')) {
+        <p class="m-0">Name is required</p>
+        }@else if (resgisterForm.get('name')?.getError('minlingth')) {
+        <p class="m-0">Name Should be more than or equal 3 chars</p>
+        }@else{
+        <p class="m-0">Name Should be less than or equal 20 chars</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="my-2">
+      <label for="email">{{'form.Email' |translate}}</label>
+      <input
+        id="email"
+        [ngClass]="{
+            'is-valid': !resgisterForm.get('email')?.errors && ( resgisterForm.get('email')?.touched || resgisterForm.get('email')?.dirty),
+            'is-invalid': resgisterForm.get('email')?.errors && (resgisterForm.get('email')?.touched || resgisterForm.get('email')?.dirty),
+        }"
+        type="email"
+        class="form-control"
+        formControlName="email"
+      />
+      @if (resgisterForm.get('email')?.errors &&
+      (resgisterForm.get('email')?.touched ||
+      resgisterForm.get('email')?.dirty)) {
+      <div class="alert alert-danger my-1 w-50">
+        @if (resgisterForm.get('email')?.getError('required')) {
+        <p class="m-0">email is required</p>
+        }@else if (resgisterForm.get('email')?.getError('email')) {
+        <p class="m-0">Enter Valid Email</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="my-2">
+      <label for="phone">{{'form.Phone' |translate}}</label>
+      <input
+      [ngClass]="{
+        'is-valid': !resgisterForm.get('phone')?.errors && ( resgisterForm.get('phone')?.touched || resgisterForm.get('phone')?.dirty),
+        'is-invalid': resgisterForm.get('phone')?.errors && (resgisterForm.get('phone')?.touched || resgisterForm.get('phone')?.dirty),
+    }"
+        id="phone"
+        type="tel"
+        class="form-control"
+        formControlName="phone"
+      />
+      @if (resgisterForm.get('phone')?.errors &&
+      (resgisterForm.get('phone')?.touched ||
+      resgisterForm.get('phone')?.dirty)) {
+      <div class="alert alert-danger my-1 w-50">
+        @if (resgisterForm.get('phone')?.getError('required')) {
+        <p class="m-0">phone is required</p>
+        }@else if (resgisterForm.get('phone')?.getError('onlyEgNumber')) {
+        <p class="m-0">accept only egypt phone numbers</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="my-2">
+      <label for="password">{{'form.Password' |translate}}</label>
+      <input
+      [ngClass]="{
+        'is-valid': !resgisterForm.get('password')?.errors && ( resgisterForm.get('password')?.touched || resgisterForm.get('password')?.dirty),
+        'is-invalid': resgisterForm.get('password')?.errors && (resgisterForm.get('password')?.touched || resgisterForm.get('password')?.dirty),
+    }"
+        id="password"
+        type="password"
+        class="form-control"
+        formControlName="password"
+      />
+      @if (resgisterForm.get('password')?.errors &&
+      (resgisterForm.get('password')?.touched ||
+      resgisterForm.get('password')?.dirty)) {
+      <div class="alert alert-danger my-1 w-50">
+        @if (resgisterForm.get('password')?.getError('required')) {
+        <p class="m-0">password is required</p>
+        }@else if (resgisterForm.get('password')?.getError('anyChar')) {
+        <p class="m-0">password must be at least 6 chars</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="my-2">
+      <label for="rePassword">{{'form.RePassword' |translate}}</label>
+      <input
+      [ngClass]="{
+        'is-valid': !resgisterForm.get('rePassword')?.errors && ( resgisterForm.get('rePassword')?.touched || resgisterForm.get('rePassword')?.dirty),
+        'is-invalid': resgisterForm.get('rePassword')?.errors && (resgisterForm.get('rePassword')?.touched || resgisterForm.get('rePassword')?.dirty),
+    }"
+        id="rePassword"
+        type="password"
+        class="form-control"
+        formControlName="rePassword"
+      />
+      @if (resgisterForm.get('rePassword')?.errors && (
+      resgisterForm.get('rePassword')?.touched ||
+      resgisterForm.get('rePassword')?.dirty)){
+      <div class="alert alert-danger my-1 w-50">
+        @if (resgisterForm.get('rePassword')?.getError('required')) {
+        <p class="m-0">RePassword is required</p>
+        }@else {
+        <p class="m-0">Password confirmation is incorrect</p>
+        }
+      </div>
+      }
+    </div>
+    <button [disabled]="resgisterForm.invalid || isLoaded" type="submit" class="btn-main d-block ms-auto">
+      {{'navbar.register' |translate}} @if (isLoaded) {
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+      }
+    </button>
+
+  </form>
+</section>

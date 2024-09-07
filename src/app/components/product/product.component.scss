@@ -1,0 +1,78 @@
+.mySwiper {
+  height: 18.75rem !important;
+}
+.mySwiper2 {
+  height: 9.375rem !important;
+}
+.active {
+  background: red !important;
+}
+.heartIcon {
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.ratingdetails .Sfa-star {
+  font-size: 14px !important;
+}
+.ratingdetails .productPrice {
+  font-size: 14px !important;
+}
+.ratingdetails .productRatingsAverage {
+  font-size: 14px !important;
+}
+@media screen and (max-width: 768px) {
+  .mySwiper {
+    height: 10.75rem !important;
+  }
+  .sideImgs {
+    display: none;
+  }
+}
+h1.text-main {
+  padding-left: 1%;
+}
+.Sfa-star {
+  font-size: 12px !important;
+}
+.productPrice {
+  font-size: 12px !important;
+}
+.productRatingsAverage {
+  font-size: 12px !important;
+}
+
+@media screen and (max-width: 600px) {
+  .rowProduct {
+    height: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+  .colProduct {
+    height: 100% !important;
+    width: 50% !important;
+    position: relative;
+    left: 50%;
+    transform: translateX(-98%);
+  }
+  .colProduct .imgContainer {
+    display: flex !important;
+    justify-content: center;
+  }
+  .colProduct .imgContainer img {
+    width: 60% !important;
+  }
+  h1.text-main {
+    padding-left: 1%;
+  }
+  .Sfa-star {
+    font-size: 12px;
+  }
+  .productPrice {
+    font-size: 12px;
+  }
+  .productRatingsAverage {
+    font-size: 12px;
+  }
+}

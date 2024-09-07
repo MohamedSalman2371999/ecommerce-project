@@ -1,0 +1,85 @@
+@if (detailsList) {
+    <section class="my-2">
+    <div class="container-fluid">
+        <h1 class="text-center text-main">Details Product</h1>
+        <div class="row gy-3 align-items-center">
+            <div class="col-md-3">
+                <div>
+                    <swiper-container autoplay-pause-on-mouse-enter="true" reverseDirection="true" autoplay-disable-on-interaction="false" style="--swiper-navigation-color: #b4b4b4; --swiper-pagination-color: #fff" class="mySwiper"
+                    thumbs-swiper=".mySwiper2" loop="true" autoplay="true" space-between="10" navigation="false">
+                    <swiper-slide>
+                      <img [src]="detailsList.imageCover" class="h-100 w-100" alt="">
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img [src]="imagesList[0]" class="h-100 w-100" alt="">
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img [src]="imagesList[1]" class="h-100 w-100" alt="">
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img [src]="imagesList[2]" class="h-100 w-100" alt="">
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img [src]="imagesList[3]" class="h-100 w-100" alt="">
+                    </swiper-slide>
+                  </swiper-container>
+                
+                  <swiper-container class="mySwiper2" loop="true" space-between="2" slides-per-view="5" free-mode="true"
+                    watch-slides-progress="true">
+                    <swiper-slide>
+                        <img [src]="detailsList.imageCover" class="h-100 w-100" alt="">
+                      </swiper-slide>
+                      <swiper-slide>
+                        <img [src]="imagesList[0]" class="h-100 w-100" alt="">
+                      </swiper-slide>
+                      <swiper-slide>
+                        <img [src]="imagesList[1]" class="h-100 w-100" alt="">
+                      </swiper-slide>
+                      <swiper-slide>
+                        <img [src]="imagesList[2]" class="h-100 w-100" alt="">
+                      </swiper-slide>
+                      <swiper-slide>
+                        <img [src]="imagesList[3]" class="h-100 w-100" alt="">
+                      </swiper-slide>
+                  </swiper-container>
+                
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div>
+                    <h2>{{detailsList.title}}</h2>
+                    <p class="text-muted">{{detailsList.description}}</p>
+                    <div class="TitleandHeart">
+                      <h4 class="h6 p-0 m-0 text-main">
+                        {{ detailsList.category.name }}
+                      </h4>
+                      <div class="heartIcon">
+                        @if (productID.includes(detailsList._id)) {
+                          <i (click)="deleteItem(detailsList._id)" class="fa-solid fa-xl fa-heart text-danger"></i>
+                        }
+                        @if(!productID.includes(detailsList._id)){
+                          <i (click)="addProductToWishList(detailsList._id)" class="fa-regular fa-xl fa-heart"></i>
+                        }
+                    </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center p-1">
+                        <span>{{detailsList.price}} EGP</span>
+                        <div>
+                            @for (rat of stars.slice(0,detailsList.ratingsAverage); track $index) {
+                                <span><i class="fas fa-star rating-color"></i></span>
+                            }
+                            @if (detailsList.ratingsAverage%2!=0) {
+                                <i class="fa-solid fa-star-half-stroke rating-color"></i>
+                            }
+                            <span class="text-muted">{{detailsList.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <button  (click)="addToCard(detailsList.id)" class="btn-main w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+}

@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand px-2 cr" routerlink="home">
+      <img src="./assets/images/freshcart-logo.svg" routerLink="/home" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class=" collapse navbar-collapse" id="navbarNav">
+          <div class="R-and-L-Side w-100 d-flex">
+            <div>
+              <ul class="navbar-nav p-0"> 
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="home" routerLinkActive="active-link">{{'navbar.home' |translate}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="products" routerLinkActive="active-link">{{'navbar.products' |translate}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="categories" routerLinkActive="active-link">{{'navbar.categories' |translate}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="brands" routerLinkActive="active-link">{{'navbar.brands' |translate}}</a>
+                </li>
+              </ul>
+            </div>
+              <div class="d-flex flex-wrap">
+                <div>
+                  <ul class="navbar-nav navbar-navSm p-0">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{'navbar.Lang' |translate}} 
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li class="cr" [class.bg-info]="_TranslateService.currentLang=='en'" (click)="Change('en')"><a class="dropdown-item">{{'navbar.EN' |translate}}</a></li>
+                        <li class="cr" [class.bg-info]="_TranslateService.currentLang=='ar'" (click)="Change('ar')"><a class="dropdown-item">{{'navbar.AR' |translate}}</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <!-- <div class="pt-2">
+
+                </div> -->
+                <div class="cart-heart pt-2">
+                <div class="ps-2 pe-2 position-relative cr" routerLink="wishList" routerLinkActive="">
+                    <span class="cartnum active-link">{{N_countInWishList}}</span>
+                    <i class="fa-solid fa-heart text-danger"></i>
+                </div>
+                  <div class="ps-2 pe-2 position-relative cr" routerLink="cart" routerLinkActive="">
+                    <span class="cartnum active-link">{{N_count}}</span>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                </div>
+                <div class="d-flex align-items-center">    
+                  <ul class="navbar-nav navbar-navSm p-0">
+                    <li class="nav-item nav-itemSm">
+                      <a class="nav-link"><i class="fa-brands fa-facebook"></i></a>
+                    </li>
+                    <li class="nav-item nav-itemSm">
+                      <a class="nav-link"><i class="fa-brands fa-twitter"></i></a>
+                    </li>
+                    <li class="nav-item nav-itemSm">
+                      <a class="nav-link"><i class="fa-brands fa-instagram"></i></a>
+                    </li>
+                    <li class="nav-item nav-itemSm">
+                      <a class="nav-link"><i class="fa-brands fa-linkedin"></i></a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul class="navbar-nav navbar-navSm p-0">
+                    <li class="nav-item nav-itemSm">
+                      <a class="nav-link cr" (click)="_AuthService.logOut()" >{{'navbar.signOut' |translate}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</nav>

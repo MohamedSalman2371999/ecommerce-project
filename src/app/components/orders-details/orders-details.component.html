@@ -1,0 +1,87 @@
+<div class="container">
+    <section class="bg-main-light shadow p-2 my-2 rounded">
+      <form [formGroup]="shippingAddress" (ngSubmit)="checkOut()">
+        <div class="my-2">
+          <label for="details">Details</label>
+          <textarea
+            [ngClass]="{
+                  'is-valid': !shippingAddress.get('details')?.errors && ( shippingAddress.get('details')?.touched || shippingAddress.get('details')?.dirty),
+                  'is-invalid': shippingAddress.get('details')?.errors && (shippingAddress.get('details')?.touched || shippingAddress.get('details')?.dirty),
+              }"
+            id="details"
+            class="form-control"
+            formControlName="details"
+          ></textarea>
+          @if (shippingAddress.get('details')?.errors &&
+          (shippingAddress.get('details')?.touched ||
+          shippingAddress.get('details')?.dirty)) {
+          <div class="alert alert-danger my-1 w-50">
+            @if (shippingAddress.get('details')?.getError('required')) {
+            <p class="m-0">details is required</p>
+            }
+          </div>
+          }
+        </div>
+        <div class="my-2">
+          <label for="phone">Phone</label>
+          <input
+            [ngClass]="{
+                  'is-valid': !shippingAddress.get('phone')?.errors && ( shippingAddress.get('phone')?.touched || shippingAddress.get('phone')?.dirty),
+                  'is-invalid': shippingAddress.get('phone')?.errors && (shippingAddress.get('phone')?.touched || shippingAddress.get('phone')?.dirty),
+              }"
+            id="phone"
+            type="tel"
+            class="form-control"
+            formControlName="phone"
+          />
+          @if (shippingAddress.get('phone')?.errors &&
+          (shippingAddress.get('phone')?.touched ||
+          shippingAddress.get('phone')?.dirty)) {
+          <div class="alert alert-danger my-1 w-50">
+            @if (shippingAddress.get('phone')?.getError('required')) {
+            <p class="m-0">phone is required</p>
+            }@else if (shippingAddress.get('phone')?.getError('onlyEgNumber')) {
+            <p class="m-0">accept only egypt phone numbers</p>
+            }
+          </div>
+          }
+        </div>
+        <div class="my-2">
+          <label for="city">City</label>
+          <input
+            [ngClass]="{
+                  'is-valid': !shippingAddress.get('city')?.errors && ( shippingAddress.get('city')?.touched || shippingAddress.get('city')?.dirty),
+                  'is-invalid': shippingAddress.get('city')?.errors && (shippingAddress.get('city')?.touched || shippingAddress.get('city')?.dirty),
+              }"
+            id="city"
+            type="text"
+            class="form-control"
+            formControlName="city"
+          />
+          @if (shippingAddress.get('city')?.errors &&
+          (shippingAddress.get('city')?.touched ||
+          shippingAddress.get('city')?.dirty)) {
+          <div class="alert alert-danger my-1 w-50">
+            @if (shippingAddress.get('city')?.getError('required')) {
+            <p class="m-0">city is required</p>
+            }
+          </div>
+          }
+        </div>
+        <div>
+            <button
+              [disabled]="shippingAddress.invalid || isloaded"
+              class="btn-main my-1 d-block"
+              (click)="checkOut()"
+            >
+              Check Out @if (isloaded) {
+              <span><i class="fas fa-spin fa-spinner"></i></span>
+              }
+            </button>
+        </div>
+        @if (msgError) {
+        <p class="alert alert-danger m-0 w-50 d-block ms-auto">{{ msgError }}</p>
+        }
+      </form>
+    </section>
+</div>

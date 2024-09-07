@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <section class="my-3">
+        <h1 class="h2 text-main">All Brands :</h1>
+        <div class="row rowProduct g-3">
+            @for (Brand of allBrands; track Brand._id) {
+                <div class="col-lg-2 col-md-3 colProduct colProduct col-sm-6 cr">
+                    <div class="forSmallDevices border" (click)="openModel(Brand._id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img [src]="Brand.image" height="250px" class="w-100" [alt]="Brand.name">
+                        <h3 class="h6 text-main my-2 ">{{Brand.name}}</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+    </div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="forSmallDevices">
+                <img [src]="specificBrands.image" height="250px" class="w-100" [alt]="specificBrands.name">
+                <h3 class="h6 text-main my-2 "> Name : {{specificBrands.name}}</h3>
+                <h3 class="h6 text-main my-2 ">Slug : {{specificBrands.slug}}</h3>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

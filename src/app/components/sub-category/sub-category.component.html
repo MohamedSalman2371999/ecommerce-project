@@ -1,0 +1,32 @@
+<section class="my-3">
+<div class="container-fluid">
+<div class="row g-3">
+    @if(subCategoryList.length==0){
+        <h1 class="text-main text-center p-0 m-0">
+            {{ text }}
+          </h1>
+    }
+    @for (product of subCategoryList; track product._id) {
+        <div class="col-lg-2 col-md-3 colProduct col-sm-6">
+            <div class="product forSmallDevices position-relative">
+                <div class="cr">
+                  <div class="p-1">
+                    <h3 class="small text-main p-0 m-0">
+                      {{ product.name }}
+                    </h3>
+                  </div>
+                </div>
+                <div class="cr">
+                <div
+                  class="ratingdetails m-0 p-1"
+                >
+                  <span class="productPrice">{{ product.slug }}</span>
+                </div>
+                </div>
+            </div>
+          </div>
+        
+      }
+    </div>
+</div>    
+</section>

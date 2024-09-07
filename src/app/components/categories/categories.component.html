@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <section class="my-3">
+        <h1 class="h2 text-main">All Categories :</h1>
+        <div class="row rowProduct g-3">
+            @for (Categorie of allcategories; track Categorie._id) {
+                <div class="col-lg-2 col-md-3 colProduct colProduct col-sm-6">
+                    <div class="forSmallDevices cr" [routerLink]="['/subCategory',Categorie._id]">
+                        <img [src]="Categorie.image" height="250px" class="w-100" alt="">
+                        <h3 class="h6 text-main my-2 ">{{Categorie.name}}</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+    </div>

@@ -1,0 +1,65 @@
+@if (allProductInWishList) {
+  <section  [class.d-none]="! isempty" class="cartSection bg-main-light rounded-4 my-2 p-4 w-75 mx-auto">
+        <h1 class="h2 text-center text-main">Wish List Is Empty</h1>
+  </section>
+    <section  [class.d-none]="isempty" class="mx-5 my-3">
+      <h1 class="h2 text-main">{{ "Wish List :" }}</h1>
+      <div class="row rowProduct g-3">
+        @for (product of allProductInWishList; track product.id) {
+        <div class="col-lg-2 col-md-3 colProduct col-sm-6">
+          <div class="product forSmallDevices position-relative">
+            <div [routerLink]="['/details', product._id]" class="cr">
+              <div class="imgContainer">
+                <img
+                  [src]="product.imageCover"
+                  class="imageCover w-100"
+                  [alt]="product.title"
+                />
+              </div>
+              <div class="p-1">
+                <h3 class="small text-main p-0 m-0">
+                  {{ product.category.name }}
+                </h3>
+                <div class="TitleandHeart">
+                  <h4 class="h6 p-0 m-0">
+                    {{ product.title.split(" ", 2).join(" ") }}
+                  </h4>
+                  <div class="heartIcon">
+                    <span>
+                      <i class="fa-solid fa-heart"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="ratingdetails m-0 p-1">
+                <span class="productPrice">{{ product.price }} EGP</span>
+                <div>
+                  @for (rat of stars.slice(0,product.ratingsAverage); track $index)
+                  {
+                  <span class="Sfa-star"
+                    ><i class="fas fa-star rating-color"></i
+                  ></span>
+                  } @if (product.ratingsAverage%2 != 0 && product.ratingsAverage!=5)
+                  {
+                  <i class="Sfa-star fa-solid fa-star-half-stroke rating-color"></i>
+                  }
+                  <span class="productRatingsAverage text-muted">{{
+                    product.ratingsAverage
+                  }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-2">
+              <button
+                (click)="deleteItem(product.id)"
+                class="btn delButton btn-danger w-100"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </section>
+}

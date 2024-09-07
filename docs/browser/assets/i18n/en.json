@@ -1,0 +1,22 @@
+{
+    "navbar":{
+        "home":"home",
+        "products":"products",
+        "categories":"categories",
+        "brands":"brands",
+        "Lang":"Lang",
+        "EN":"EN",
+        "AR":"AR",
+        "login":"Login",
+        "register":"Register",
+        "signOut":"SignOut",
+        "Popular Products :":"Popular Products :"
+    },
+    "form":{
+        "Name":"Name",
+        "Email":"Email",
+        "Phone":"Phone", 
+        "Password":"Password", 
+        "RePassword":"RePassword"
+    }
+}

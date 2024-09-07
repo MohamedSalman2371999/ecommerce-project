@@ -1,0 +1,41 @@
+<section class="p-2 my-2 mx-auto w-75">
+    <h1 class="h2 text-center text-main">your all purchases</h1>
+    @for (item of allorders; track $index) {
+        <h1 class="text-main">Order {{$index+1}}</h1>
+        <div class="bg-main-light px-3">
+        @for (item of item.cartItems; track $index) {        
+            <div class="row pb-2 border-bottom">
+                <div class="col-md-1">
+                    <div class="my-2">
+                        <img [src]="item.product.imageCover" class="w-100" alt="">
+                    </div>
+                </div>
+                <div class="col-md-11 d-flex flex-column justify-content-between">
+                    <h3 class="h5 text-main">{{item.product.category.name}}</h3>
+                    <p class="text-muted text-main">{{item.price | currency:'GBP'}}</p>
+                    <p>product count: {{item.count}}</p>
+                </div>
+            </div>
+        }
+    </div>
+    }
+    </section>
+<!-- 
+    <section class="bg-main-light shadow p-2 my-2 rounded-3 mx-auto w-75">
+        <h1 class="h2 text-center text-main">your all purchases</h1>
+            @for (item of allorders.cartItems ; track $index) {
+                
+                <div class="row pb-2 border-bottom">
+                    <div class="col-md-1">
+                        <div class="my-2">
+                            <img [src]="item.product.imageCover" class="w-100" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-11 d-flex flex-column justify-content-between">
+                        <h3 class="h5 text-main">{{item.product.category.name}}</h3>
+                        <p class="text-muted">{{item.price | currency:'GBP'}}</p>
+                        <p>product count: {{item.count}}</p>
+                    </div>
+                </div>
+        }
+        </section> -->

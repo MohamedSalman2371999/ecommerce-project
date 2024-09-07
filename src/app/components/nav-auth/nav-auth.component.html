@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerlink="home">
+        <img src="./assets/images/freshcart-logo.svg" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class=" d-flex justify-content-end">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="d-flex">
+            <div>
+              <ul class="navbar-nav navbar-navSm p-1">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{'navbar.Lang' |translate}} 
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="cr" [class.bg-info]="_TranslateService.currentLang=='en'" (click)="Change('en')"><a class="dropdown-item">{{'navbar.EN' |translate}}</a></li>
+                    <li class="cr" [class.bg-info]="_TranslateService.currentLang=='ar'" (click)="Change('ar')"><a class="dropdown-item">{{'navbar.AR' |translate}}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="navbar-nav navbar-navSm p-1">
+                <li class="nav-item nav-itemSm">
+                  <a class="nav-link"><i class="fa-brands fa-facebook"></i></a>
+                </li>
+                <li class="nav-item nav-itemSm">
+                  <a class="nav-link"><i class="fa-brands fa-twitter"></i></a>
+                </li>
+                <li class="nav-item nav-itemSm">
+                  <a class="nav-link"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li class="nav-item nav-itemSm">
+                  <a class="nav-link"><i class="fa-brands fa-linkedin"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="navbar-nav navbar-navSm p-1">
+                <li class="nav-item nav-itemSm">
+                  <a class="nav-link cr" routerLink="login" routerLinkActive="active-link" >{{'navbar.login' |translate}}</a>
+                </li>
+                <li class="nav-item nav-itemSm">
+                  <a class="nav-link cr" routerLink="register" routerLinkActive="active-link" >{{'navbar.register' |translate}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

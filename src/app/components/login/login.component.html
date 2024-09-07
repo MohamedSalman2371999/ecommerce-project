@@ -1,0 +1,50 @@
+<section class="bg-main-light shadow p-2 my-2 rounded">
+    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+        <div class="my-2">
+            <label for="email">{{'form.Email' |translate}}</label>
+            <input id="email" class="form-control" type="email" formControlName="email">
+            @if (loginForm.get('email')?.errors &&
+            (loginForm.get('email')?.touched || loginForm.get('email')?.dirty))
+            {
+                <div class="alert alert-danger my-1 w-50">
+            @if (loginForm.get('email')?.getError('required')) {
+                <p class="m-0">Email is required</p>
+            }@else{
+                <p class="m-0">Enter Valid Email</p>
+            }
+      </div>
+            }
+        </div>
+        <div class="my-2">
+            <label for="password">{{'form.Password' |translate}}</label>
+            <input id="password" class="form-control" type="password" formControlName="password">
+            @if (loginForm.get('password')?.errors &&
+            (loginForm.get('password')?.touched || loginForm.get('password')?.dirty))
+            {
+                <div class="alert alert-danger my-1 w-50">
+            @if (loginForm.get('password')?.getError('required')) {
+                <p class="m-0">Password is required</p>
+            }@else{
+                <p class="m-0">password must be at least 6 chars</p>
+            }
+      </div>
+            }
+        </div>
+        <div class="d-flex justify-content-between align-items-center" >
+            <div class="leftSide my-1">
+                <p class="link-info m-0 p-0 cr text-decoration-underline" routerLink="/forgetPassword" >Forget Password ?</p>
+            </div>
+            <div class="ightSide">
+                <button [disabled]="loginForm.invalid || isloaded"  class="btn-main my-1 d-block ms-auto">
+                    {{'navbar.login' |translate}}
+                    @if (isloaded) {
+                        <span><i class="fas fa-spin fa-spinner"></i></span>
+                    }
+                </button>
+            </div>
+        </div>
+        @if (msgError) {
+            <p class="alert alert-danger m-0 w-50 d-block ms-auto">{{msgError}}</p>
+        }
+    </form>
+</section>
