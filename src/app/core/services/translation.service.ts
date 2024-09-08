@@ -1,20 +1,24 @@
 import { dirname } from 'node:path';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
   private readonly _TranslateService = inject(TranslateService)
+  private readonly _PLATFORM_ID = inject(PLATFORM_ID)
 
   constructor() {
-    let savedLang = localStorage.getItem('lang')
-
-    this._TranslateService.setDefaultLang('en')
-
-    this._TranslateService.use(savedLang!)
-    this.changeDirction()
+    if(isPlatformBrowser(this._PLATFORM_ID)){
+      let savedLang = localStorage.getItem('lang')
+  
+      this._TranslateService.setDefaultLang('en')
+  
+      this._TranslateService.use(savedLang!)
+      this.changeDirction()
+    }
   }
   changeDirction(): void {
     let savedLang = localStorage.getItem('lang')
