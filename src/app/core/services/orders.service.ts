@@ -7,22 +7,22 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class OrdersService {
-myheader:any ={token:localStorage.getItem('userToken')}
-  constructor(private readonly _HttpClient:HttpClient) { }
+  myheader: any = { token: localStorage.getItem('userToken') }
+  constructor(private readonly _HttpClient: HttpClient) { }
 
-  checkoutSession(id:string|null,shippingAddress:object):Observable<any>{
-    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:4200/`,
+  checkoutSession(id: string | null, shippingAddress: object): Observable<any> {
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://ecommerc-route.netlify.app/`,
       {
-        "shippingAddress":shippingAddress
-    },
+        "shippingAddress": shippingAddress
+      },
       {
-        headers:this.myheader
+        headers: this.myheader
       }
     )
   }
 
-  getAllOrders(id:string):Observable<any>{
+  getAllOrders(id: string): Observable<any> {
     return this._HttpClient.get(`${environment.baseUrl}/api/v1/orders/user/${id}`)
-    
+
   }
 }
