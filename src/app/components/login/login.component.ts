@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink,TranslateModule],
+  imports: [ReactiveFormsModule, RouterLink, TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -27,6 +27,7 @@ export class LoginComponent {
   })
 
   loginSubmit(): void {
+    this.isloaded = true
     if (this.loginForm.valid) {
       this._AuthService.setLoginForm(this.loginForm.value).subscribe({
         next: (res) => {
@@ -37,10 +38,7 @@ export class LoginComponent {
             this._AuthService.saveUserData()
             this._Router.navigate(['/home'])
           }
-        },complete: () => {
-          this.isloaded = false
         }
-        
       })
     } else {
       this.isloaded = false
@@ -48,6 +46,7 @@ export class LoginComponent {
     }
     console.log(this.loginForm.value);
     console.log(this.loginForm.valid);
+    console.log(this.isloaded);
 
 
   }

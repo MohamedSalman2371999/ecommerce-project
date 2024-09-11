@@ -55,10 +55,10 @@
                       </h4>
                       <div class="heartIcon">
                         @if (productID.includes(detailsList._id)) {
-                          <i (click)="deleteItem(detailsList._id)" class="fa-solid fa-xl fa-heart text-danger"></i>
+                          <i (click)="deleteItem(detailsList._id)" class="fa-solid fa-xl fa-heart text-danger cr"></i>
                         }
                         @if(!productID.includes(detailsList._id)){
-                          <i (click)="addProductToWishList(detailsList._id)" class="fa-regular fa-xl fa-heart"></i>
+                          <i (click)="addProductToWishList(detailsList._id)" class="fa-regular fa-xl fa-heart cr"></i>
                         }
                     </div>
                     </div>

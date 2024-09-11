@@ -18,7 +18,11 @@ export class AppComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     if (isPlatformBrowser(this._PLATFORM_ID)) {
-      localStorage.setItem("lang", 'en')
+      if (localStorage.getItem("lang")!==null) {
+        
+      }else{
+        localStorage.setItem("lang", 'en')
+      }
     }
   }
 

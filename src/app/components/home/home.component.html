@@ -3,12 +3,11 @@
     <div class="col-md-9">
       <div class="mySwiper">
         <owl-carousel-o [options]="mainsliderOptions" class="w-100">
-          <ng-template carouselSlide><img src="./assets/images/slide1.gif"  class="w-100 mySwiper" alt=""></ng-template>  
-          <ng-template carouselSlide><img src="./assets/images/slider2.avif"  class="w-100 mySwiper"  alt=""></ng-template>  
-          <ng-template carouselSlide><img src="./assets/images/grocery-banner.png"  class="w-100 mySwiper" alt=""></ng-template>  
-          <ng-template carouselSlide><img src="./assets/images/slider4.avif"  class="w-100 mySwiper" alt=""></ng-template>  
-          <ng-template carouselSlide><img src="./assets/images/grocery-banner-2.jpeg"  class="w-100 mySwiper" alt=""></ng-template>  
-  
+          <ng-template carouselSlide><img src="./assets/images/slide1.gif" class="w-100 mySwiper" alt=""></ng-template>  
+          <ng-template carouselSlide><img src="./assets/images/slider2.avif" class="w-100 mySwiper"  alt=""></ng-template>  
+          <ng-template carouselSlide><img src="./assets/images/grocery-banner.png" class="w-100 mySwiper" alt=""></ng-template>  
+          <ng-template carouselSlide><img src="./assets/images/slider4.avif" class="w-100 mySwiper" alt=""></ng-template>  
+          <ng-template carouselSlide><img src="./assets/images/grocery-banner-2.jpeg" class="w-100 mySwiper" alt=""></ng-template>  
         </owl-carousel-o>
       </div>
     </div>
@@ -19,7 +18,6 @@
       </div>
     </div>
   </div>
-
 </section>
 <div class="container-fluid">
   <section class="my-3">
@@ -67,7 +65,6 @@
                     <h3 class="small text-main p-0 m-0">
                       {{ product.category.name }}
                     </h3>
-    
                   </div>
                   <div
                     class="ratingdetails m-0 p-1"
@@ -176,4 +173,11 @@
       }
     </div>
   </section>
+</div>
+
+<div class="pagenation text-center d-flex align-items-center justify-content-center gap-4 my-3">
+  <i class="fa-solid fa-angle-up fa-rotate-270 cr" (click)="prevPage()"></i>
+  <span [ngClass]="{'text-white': !checkpag,'btn-main': !checkpag}" class="fw-bold cr px-2 rounded-1" (click)="prevPage()">1</span>
+  <span [ngClass]="{'text-white': checkpag,'btn-main':checkpag}"  class="fw-bold cr px-2 rounded-1" (click)="nextPage()">2</span>
+  <i class="fa-solid fa-angle-up fa-rotate-90 cr" (click)="nextPage()"></i>
 </div>

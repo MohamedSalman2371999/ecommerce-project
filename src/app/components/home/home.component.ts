@@ -9,7 +9,7 @@ import { Iproduct } from '../../core/interfaces/product';
 import { CategoriesService } from '../../core/services/categories.service';
 import { Icategories } from '../../core/interfaces/icategories';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-import { SlicePipe } from '@angular/common';
+import { NgClass, SlicePipe } from '@angular/common';
 import { SearchPipe } from '../../core/pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../core/services/cart.service';
@@ -23,7 +23,7 @@ import { stringify } from 'node:querystring';
 @Component({
   selector: 'app-home',
   standalone:true,
-  imports: [CarouselModule, RouterLink,SlicePipe,SearchPipe,FormsModule,TranslateModule,HeartDirective,],
+  imports: [CarouselModule, RouterLink,SlicePipe,SearchPipe,FormsModule,TranslateModule,HeartDirective,NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -31,6 +31,7 @@ import { stringify } from 'node:querystring';
 export class HomeComponent {
   stars: number[] = new Array(5)
   productID: string[] =[]
+  checkpag:boolean=false
 
   addedto:boolean=false
   text:string =''
@@ -84,6 +85,7 @@ export class HomeComponent {
   private readonly _WishlistService=inject(WishlistService)
 
   productList: Iproduct[] = []
+  productList2: Iproduct[] = []
   newproductList: Iproduct[] = []
   CategoriestList: Icategories[] = []
   heartproduct: IWhishlist[] | null = null
@@ -100,7 +102,6 @@ export class HomeComponent {
       },
       error: (err) => {
         console.log(err);
-
       }
     })
     this._CategoriesService.getAllCategoreis().subscribe({
@@ -118,7 +119,7 @@ export class HomeComponent {
       next: (res) => {
         this.productList = res.data
         localStorage.getItem('newcolor')
-        console.log("list",this.productList);
+        console.log("list all",this.productList);
         // this.check()
 
       },
@@ -146,7 +147,6 @@ export class HomeComponent {
       next:(res)=>{
         this._ToastrService.success(res.message,'FreshCard')
         console.log(res);
-        this.productID=res.data
         this._WishlistService.getAllProductInWishList().subscribe({
           next: (res) => {
             // this.heartproduct =res.data
@@ -201,7 +201,6 @@ export class HomeComponent {
             console.log( this.productID);
             // this.check()
             console.log(res);
-            this.heartproduct = res.data
           }
         })
       }, error: (err) => {
@@ -210,5 +209,38 @@ export class HomeComponent {
       }
     })
   }
-    
+   
+  nextPage():void{
+    this._ProductsService.getProducts__().subscribe({
+      next: (res) => {
+        // this.productList=this.productList.slice(0,15)
+        // res.data.map((item:any)=>{
+        //   this.productList.push(item);
+        // })
+        this.productList=res.data
+        console.log(this.productList);
+        this.checkpag=true
+      },
+      error: (err) => {
+        console.log(err);
+
+      }
+    })
+  }
+  prevPage():void{
+    this._ProductsService.getProducts().subscribe({
+      next: (res) => {
+        this.productList=res.data
+        console.log(this.productList);
+        this.checkpag=false
+      },
+      error: (err) => {
+        console.log(err);
+
+      }
+    })
+  }
+
+
+
 }
