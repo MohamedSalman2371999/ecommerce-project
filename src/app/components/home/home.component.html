@@ -177,7 +177,7 @@
 
 <div class="pagenation text-center d-flex align-items-center justify-content-center gap-4 my-3">
   <i class="fa-solid fa-angle-up fa-rotate-270 cr" (click)="prevPage()"></i>
-  <span [ngClass]="{'text-white': !checkpag,'btn-main': !checkpag}" class="fw-bold cr px-2 rounded-1" (click)="prevPage()">1</span>
-  <span [ngClass]="{'text-white': checkpag,'btn-main':checkpag}"  class="fw-bold cr px-2 rounded-1" (click)="nextPage()">2</span>
+  <span [ngClass]="{'text-white': !checkpag,'btn-main': !checkpag}" class="fw-medium cr p-3 np rounded-1" (click)="prevPage()">1</span>
+  <span [ngClass]="{'text-white': checkpag,'btn-main':checkpag}"  class="fw-medium cr p-0 np rounded-1" (click)="nextPage()">2</span>
   <i class="fa-solid fa-angle-up fa-rotate-90 cr" (click)="nextPage()"></i>
 </div>
